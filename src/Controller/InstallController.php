@@ -68,24 +68,24 @@ class InstallController extends CoreUpdateController {
             return new ViewModel([
                 'bTableExists' => $bTableExists,
                 'sVendor' => 'jbinggi',
-                'sModule' => 'jbinggi-user-finger',
+                'sModule' => 'oneplace-user-finger',
             ]);
         } else {
             $sSetupConfig = $oRequest->getPost('plc_module_setup_config');
 
-            $sSetupFile = 'vendor/jbinggi/jbinggi-user-finger/data/install.sql';
+            $sSetupFile = 'vendor/jbinggi/oneplace-user-finger/data/install.sql';
             if(file_exists($sSetupFile)) {
                 echo 'got install file..';
                 $this->parseSQLInstallFile($sSetupFile,CoreUpdateController::$oDbAdapter);
             }
 
             if($sSetupConfig != '') {
-                $sConfigStruct = 'vendor/jbinggi/jbinggi-user-finger/data/structure_'.$sSetupConfig.'.sql';
+                $sConfigStruct = 'vendor/jbinggi/oneplace-user-finger/data/structure_'.$sSetupConfig.'.sql';
                 if(file_exists($sConfigStruct)) {
                     echo 'got struct file for config '.$sSetupConfig;
                     $this->parseSQLInstallFile($sConfigStruct,CoreUpdateController::$oDbAdapter);
                 }
-                $sConfigData = 'vendor/jbinggi/jbinggi-user-finger/data/data_'.$sSetupConfig.'.sql';
+                $sConfigData = 'vendor/jbinggi/oneplace-user-finger/data/data_'.$sSetupConfig.'.sql';
                 if(file_exists($sConfigData)) {
                     echo 'got data file for config '.$sSetupConfig;
                     $this->parseSQLInstallFile($sConfigData,CoreUpdateController::$oDbAdapter);
@@ -94,7 +94,7 @@ class InstallController extends CoreUpdateController {
 
             $oModTbl = new TableGateway('core_module', CoreUpdateController::$oDbAdapter);
             $oModTbl->insert([
-                'module_key' => 'jbinggi-user-finger',
+                'module_key' => 'oneplace-user-finger',
                 'type' => 'plugin',
                 'version' => \JBinggi\User\Finger\Module::VERSION,
                 'label' => 'onePlace User Finger',

@@ -1,14 +1,14 @@
 {
-  "name": "jbinggi/jbinggi-user-finger",
+  "name": "jbinggi/oneplace-user-finger",
   "description": "onePlace User-Finger Plugin. Manage your Finger's",
-  "type": "jbinggi-plugin",
+  "type": "oneplace-plugin",
   "version": "1.0.0",
   "license": "BSD-3-Clause",
   "keywords": [
     "laminas",
     "mvc",
-    "jbinggi-module",
-    "jbinggi",
+    "oneplace-module",
+    "oneplace",
     "finger",
     "framework"
   ],
