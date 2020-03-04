@@ -38,7 +38,7 @@ return [
                 ],
             ],
             'user-finger-setup' => [
-                'type'    => Segment::class,
+                'type'    => Literal::class,
                 'options' => [
                     'route' => '/user/finger/setup[/:action[/:id]]',
                     'constraints' => [

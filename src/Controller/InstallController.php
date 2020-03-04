@@ -53,7 +53,6 @@ class InstallController extends CoreUpdateController {
         $this->setThemeBasedLayout('user');
 
         $oRequest = $this->getRequest();
-
         if(! $oRequest->isPost()) {
 
             $bTableExists = false;
