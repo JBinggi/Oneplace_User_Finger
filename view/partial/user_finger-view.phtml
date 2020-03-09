@@ -1,3 +1,28 @@
-<div class="alert alert-info py-2 px-2">
-    <?=$this->translate('Please do something')?>
-</div>
+<?php
+# Only show partial if data is set
+var_dump($this->aPartialData);
+
+if(array_key_exists('user_finger',$this->aPartialData)) {
+    # add address form fields
+    $aFinger = $this->aPartialData['user_finger']['oFinger'];
+    $aFields = $this->aPartialData['user_finger']['aFormFields'];
+    if(count($aFinger) == 0) { ?>
+        <div class="alert alert-info px-2 py-2">
+            <?=$this->translate('No Finger yet')?>
+        </div>
+    <?php } else { ?>
+        <ul class="list-group">
+            <?php
+            foreach($aFinger as $oHist) { ?>
+                <li class="list-group-item">
+                    <div class="row">
+                        <?= $this->partial('partial/viewformfields', ['sFormName' => 'userfinger-single', 'sTab' => 'finger-base', 'oItem' => $oHist, 'aFormFieldsByTab' => $aFields]); ?>
+                    </div>
+                </li>
+                <?php
+            }
+            ?>
+        </ul>
+        <?php
+    }
+}

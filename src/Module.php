@@ -52,6 +52,12 @@ class Module {
         $tableGateway = $container->get(FingerTable::class);
 
         # Register Filter Plugin Hook
+//        CoreEntityController::addHook('user-edit-before',(object)['sFunction'=>'attachFingerForm','oItem'=>new FingerController($oDbAdapter,$tableGateway,$container)]);
+//        CoreEntityController::addHook('user-add-before',(object)['sFunction'=>'attachFingerForm','oItem'=>new FingerController($oDbAdapter,$tableGateway,$container)]);
+        CoreEntityController::addHook('user-view-before',(object)['sFunction'=>'attachFingerForm','oItem'=>new FingerController($oDbAdapter,$tableGateway,$container)]);
+        CoreEntityController::addHook('userfinger-add-before-save',(object)['sFunction'=>'attachFingerToUser','oItem'=>new FingerController($oDbAdapter,$tableGateway,$container)]);
+        CoreEntityController::addHook('user-single-api-list-before',(object)['sFunction'=>'attachFingerToUserAPI','oItem'=>new FingerController($oDbAdapter,$tableGateway,$container)]);
+
     }
 
     /**
